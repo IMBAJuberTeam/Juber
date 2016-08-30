@@ -44,17 +44,14 @@ public class AreaDaoImpl implements AreaDao{
 	}
 	
 	/**
-	 * �Զ����ȡ���ݼ�
 	 * 
 	 * @param PageBean pageBean
-	 * 		��װ��PageBean�࣬������ʼҳ����󼯺���
 	 * @param Criterion...ctrs
-	 * 		crts��������
 	 */
 	@Override
 	public PageBean getAreas(PageBean pageBean, Criterion...ctrs) {
 		Criteria c = sessionFactory.getCurrentSession().createCriteria(Area.class);
-		//���������ѯ
+		
 		for (Criterion criterion : ctrs) {
 			c.add(criterion);
 		}
@@ -86,9 +83,11 @@ public class AreaDaoImpl implements AreaDao{
 		String areaCode = area.getAreaCode() + "";
 		if(areaCode.endsWith("00")){
 			if(areaCode.endsWith("0000")){
-				return getAreas(Restrictions.like("areaCode",areaCode.substring(0, 2), MatchMode.START));
+				return getAreas(Restrictions.like("areaCode",areaCode.substring(0, 2), MatchMode.START), 
+						Restrictions.ne("areaCode", areaCode));
 			}
-			return getAreas(Restrictions.like("areaCode",areaCode.substring(0, 4), MatchMode.START));
+			return getAreas(Restrictions.like("areaCode",areaCode.substring(0, 4), MatchMode.START),
+					Restrictions.ne("areaCode", areaCode));
 		}
 		return null;
 	}  

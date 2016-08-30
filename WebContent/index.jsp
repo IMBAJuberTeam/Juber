@@ -21,6 +21,7 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
 	-->
 	<script type="text/javascript">
 	var contextPath = "<%=path %>";
+	var clickTime = 0;
 		function toPage(currentPage, dataCount){
 			var url = "getAreas.do";
 			var condition = $("input[name=condition]").val();
@@ -29,11 +30,36 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
 									+ "&condition=" + condition;
 		}
 		function showChildren(id){
-			$.getJSON(contextPath + "/area/getChildrens.do?id="+id,function(result){
-					for(var i=0; i < result.length; i++)
-						$('#area_'+id).after("<tr><td bgcolor='e91e6f'>"+ result[i].id +"</td><td bgcolor='e91e6f'>"+ result[i].areaCode +"</td><td bgcolor='e91e6f'>"+ result[i].areaName +"</td></tr>");
+			var children = Array();
+			if(clickTime == 0){
+				$.getJSON(contextPath + "/area/getChildrens.do?id="+id,function(result){
+					if(result == undefined){
+						return;
+					}else{
+						children = result;
 					}
-				);
+					
+					if($("tr[name='children']")!=undefined && $("tr[name='children']").length >= children.length){
+						return ;
+					}else{
+							for(var i=0; i < children.length; i++)
+								$('#area_'+id).after("<tr name ='children'><td bgcolor='e91e6f'>"+ result[i].id +"</td><td bgcolor='e91e6f'>"+ result[i].areaCode +"</td><td bgcolor='e91e6f'>"+ result[i].areaName +"</td></tr>");
+							clickTime++;
+					}
+				
+				});
+			}else{
+				$("tr[name='children']").remove();
+				clickTime = 0;
+			}
+			$('#area_'+id).attr("bgcolor","yellow");
+			}
+		function coloredTable(isOver ,id){
+			if(isOver){
+				$('#area_'+id).attr("bgcolor","yellow");	
+			}else{
+				$('#area_'+id).attr("bgcolor","");	
+			}
 		}
 	</script>
   </head>
@@ -53,7 +79,7 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
         <tbody>
             <c:if test="${!empty areaList }">  
                 <c:forEach items="${areaList }" var="area">  
-                    <tr id="area_${area.id }" onclick="showChildren(${area.id })">  
+                    <tr id="area_${area.id }" onclick="showChildren(${area.id })" onmouseover="coloredTable(true, ${area.id })" onmouseout="coloredTable(false, ${area.id })">  
                         <td>${area.id }</td>  
                         <td>${area.areaCode }</td>  
                         <td>${area.areaName }</td>
