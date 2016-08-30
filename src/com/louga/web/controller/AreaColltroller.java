@@ -4,7 +4,7 @@ import java.util.List;
 
 import javax.servlet.http.HttpServletRequest;
 
-import org.hibernate.criterion.Criterion;
+import org.hibernate.criterion.Restrictions;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
@@ -14,7 +14,10 @@ import org.springframework.web.servlet.ModelAndView;
 
 import com.louga.entity.Area;
 import com.louga.manager.AreaManager;
-import com.louga.utils.PageBean;  
+import com.louga.utils.PageBean;
+
+import net.sf.json.JSONArray;
+import net.sf.json.JSONObject;  
   
 @Controller  
 @RequestMapping("/area")  
@@ -31,30 +34,50 @@ public class AreaColltroller {
         return "/index";  
     }  
       
-    @RequestMapping("/getArea.do")
+    @RequestMapping(value="/getChildrens.do", produces = "application/json; charset=utf-8")
     @ResponseBody
-    public String getArea(String id,HttpServletRequest request){  
-          
-        request.setAttribute("area", areaManager.getArea(Integer.parseInt(id)));  
-      
-        return "/index";  
+    public String  getArea(String id,HttpServletRequest request){  
+    	List<Area> list = areaManager.getChildrens(Integer.parseInt(id));
+    	JSONArray jsonArray = new JSONArray();
+    	JSONObject jsonObject;
+        request.setAttribute("childrenList", list); 
+        for (Area area : list) {
+        	jsonObject = new JSONObject();
+        	jsonObject.put("id", area.getId());
+        	jsonObject.put("areaCode", area.getAreaCode());
+        	jsonObject.put("areaName", area.getAreaName());
+        	
+        	jsonArray.add(jsonObject);
+		}
+        return jsonArray.toString();
     }
     
 	@RequestMapping("/getAreas.do")
 	@SuppressWarnings("unchecked")
-    public ModelAndView getAreas(String pageNum, HttpServletRequest request, Model model){  
+    public ModelAndView getAreas(String pageNum, String dataCount, String condition, 
+    		HttpServletRequest request, Model model){  
           
     	PageBean pageBean = new PageBean();
-    	if(pageNum == null || pageNum.equals("")){
+    	//过滤非法页数，空或者小于0的设置为起始页1
+    	if(pageNum == null || pageNum.equals("") || Integer.parseInt(pageNum) < 1){
     		pageNum = "1";
     	}
-    	pageBean.setCurrentPage(Integer.parseInt(pageNum));
+    	if(dataCount== null || dataCount.equals("")){
+    		dataCount = "0";
+    	}
+    	int totalPages = (Integer.parseInt(dataCount)%10 == 0?0:1) + Integer.parseInt(dataCount)/10;
+    	if(Integer.parseInt(pageNum) > totalPages){
+    		pageNum = totalPages + "";
+    	}
+    	pageBean.setConditions(condition);
+    	pageBean.setCurrentPage(Integer.parseInt(pageNum.equals("0")?"1":pageNum));
     	pageBean.setMaxResult(10);
 //        request.setAttribute("areaList", (List<Area>)areaManager.getAreas(pageBean, new Criterion[]{}).getList());  
 //        request.setAttribute("page", pageBean);  
         
-        model.addAttribute("areaList",  (List<Area>)areaManager.getAreas(pageBean, new Criterion[]{}).getList());  
+        model.addAttribute("areaList",  (List<Area>)areaManager.getAreas(pageBean, Restrictions.like("areaName", "%" + condition + "%")).getList());  
         model.addAttribute("page", pageBean);
+        model.addAttribute("conditon", condition);
         
         return new ModelAndView("/index");  
     } 

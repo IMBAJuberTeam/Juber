@@ -34,5 +34,10 @@ public class AreaManagerImpl implements AreaManager {
 	public PageBean getAreas(PageBean pageBean, Criterion...ctrs) {
 		return areaDao.getAreas(pageBean, ctrs);
 	}
+
+	@Override
+	public List<Area> getChildrens(int id) {
+		return areaDao.getChildrens(id);
+	}
     
 }  

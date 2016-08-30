@@ -9,7 +9,7 @@ public class Area {
 	@Id
 	private int id;
 	@Column
-	private int areaCode;
+	private String areaCode;
 	@Column
 	private String areaName;
 	
@@ -19,10 +19,10 @@ public class Area {
 	public void setId(int id) {
 		this.id = id;
 	}
-	public int getAreaCode() {
+	public String getAreaCode() {
 		return areaCode;
 	}
-	public void setAreaCode(int areaCode) {
+	public void setAreaCode(String areaCode) {
 		this.areaCode = areaCode;
 	}
 	public String getAreaName() {

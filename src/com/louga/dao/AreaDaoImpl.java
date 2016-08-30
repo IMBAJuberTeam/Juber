@@ -6,6 +6,9 @@ import org.hibernate.Criteria;
 import org.hibernate.Query;
 import org.hibernate.SessionFactory;
 import org.hibernate.criterion.Criterion;
+import org.hibernate.criterion.MatchMode;
+import org.hibernate.criterion.Projections;
+import org.hibernate.criterion.Restrictions;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Repository;
 import org.springframework.transaction.annotation.Transactional;
@@ -41,29 +44,53 @@ public class AreaDaoImpl implements AreaDao{
 	}
 	
 	/**
-	 * ×Ô¶¨Òå»ñÈ¡Êý¾Ý¼¯
+	 * ï¿½Ô¶ï¿½ï¿½ï¿½ï¿½È¡ï¿½ï¿½ï¿½Ý¼ï¿½
 	 * 
 	 * @param PageBean pageBean
-	 * 		·â×°µÄPageBeanÀà£¬´æÓÐÆðÊ¼Ò³ºÍ×î´ó¼¯ºÏÊý
+	 * 		ï¿½ï¿½×°ï¿½ï¿½PageBeanï¿½à£¬ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½Ê¼Ò³ï¿½ï¿½ï¿½ï¿½ó¼¯ºï¿½ï¿½ï¿½
 	 * @param Criterion...ctrs
-	 * 		crtsÌõ¼þ¼¯ºÏ
+	 * 		crtsï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½
 	 */
 	@Override
 	public PageBean getAreas(PageBean pageBean, Criterion...ctrs) {
 		Criteria c = sessionFactory.getCurrentSession().createCriteria(Area.class);
-		//Ìí¼ÓÌõ¼þ²éÑ¯
+		//ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½Ñ¯
 		for (Criterion criterion : ctrs) {
 			c.add(criterion);
 		}
 		
-//		c.setProjection(Projections.rowCount());
-//		int totalRecord=Integer.valueOf(c.uniqueResult().toString());
-//		c.setProjection(null);
+		c.setProjection(Projections.rowCount());
+		int totalRecord=Integer.valueOf(c.uniqueResult().toString());
+		c.setProjection(null);
 
 		c.setFirstResult((pageBean.getMaxResult())*(pageBean.getCurrentPage()-1));
 		c.setMaxResults(pageBean.getMaxResult());
 		pageBean.setList(c.list());
+		pageBean.setDataCount(totalRecord);
 		return pageBean;
+	}
+	
+	@SuppressWarnings("unchecked")
+	public List<Area> getAreas(Criterion...ctrs){
+		Criteria c = sessionFactory.getCurrentSession().createCriteria(Area.class);
+		for (Criterion criterion : ctrs) {
+			c.add(criterion);
+		}
+		return c.list();
+	}
+	
+	@Override
+	public List<Area> getChildrens(int id) {
+		Area area = getArea(id);
+		//æ£€éªŒareacodeçš„è§„åˆ™
+		String areaCode = area.getAreaCode() + "";
+		if(areaCode.endsWith("00")){
+			if(areaCode.endsWith("0000")){
+				return getAreas(Restrictions.like("areaCode",areaCode.substring(0, 2), MatchMode.START));
+			}
+			return getAreas(Restrictions.like("areaCode",areaCode.substring(0, 4), MatchMode.START));
+		}
+		return null;
 	}  
       
  

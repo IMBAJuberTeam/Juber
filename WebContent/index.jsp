@@ -15,35 +15,63 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
 	<meta http-equiv="expires" content="0">    
 	<meta http-equiv="keywords" content="keyword1,keyword2,keyword3">
 	<meta http-equiv="description" content="This is my page">
-	<script type="text/javascript" src="../jquery/jquery-3.1.0.min.js"></script>	
+	<script type="text/javascript" src="../jquery/jquery-1.4.4.min.js"></script>	
 	<!--
 	<link rel="stylesheet" type="text/css" href="styles.css">
 	-->
+	<script type="text/javascript">
+	var contextPath = "<%=path %>";
+		function toPage(currentPage, dataCount){
+			var url = "getAreas.do";
+			var condition = $("input[name=condition]").val();
+			window.location.href = url + "?pageNum=" + currentPage
+									+ "&dataCount=" + dataCount
+									+ "&condition=" + condition;
+		}
+		function showChildren(id){
+			$.getJSON(contextPath + "/area/getChildrens.do?id="+id,function(result){
+					for(var i=0; i < result.length; i++)
+						$('#area_'+id).after("<tr><td bgcolor='e91e6f'>"+ result[i].id +"</td><td bgcolor='e91e6f'>"+ result[i].areaCode +"</td><td bgcolor='e91e6f'>"+ result[i].areaName +"</td></tr>");
+					}
+				);
+		}
+	</script>
   </head>
   
   <body>
+	<p><span>条件筛选：<input name="condition" value="${page.conditions[0] }" />
+	<input type= "button" onclick="toPage(1, '')" value = "查询"></p>
+	</p>
     <table border="1">  
-        <tbody>  
+        <thead>  
             <tr>  
                 <th>序号</th>  
                 <th>地区编号</th>  
                 <th>地区</th>  
-            </tr>  
+            </tr>
+        </thead>
+        <tbody>
             <c:if test="${!empty areaList }">  
                 <c:forEach items="${areaList }" var="area">  
-                    <tr>  
+                    <tr id="area_${area.id }" onclick="showChildren(${area.id })">  
                         <td>${area.id }</td>  
                         <td>${area.areaCode }</td>  
-                        <td>${area.areaName }</td>  
+                        <td>${area.areaName }</td>
                     </tr>               
                 </c:forEach>  
             </c:if>
-            <tr>
-            <a href="getAreas.do?pageNum=${page.currentPage -1} ">上一页</a>
-            <span>${page.currentPage}</span>  
-            <a href="getAreas.do?pageNum=${page.currentPage +1} ">下一页</a>  
-            </tr>
-        </tbody>  
-    </table>  
+		</tbody> 
+    </table>
+    <table>
+            <tfoot>
+<%-- 		         	<a href="javaScript:toPage(${page.currentPage -1}, ${page.dataCount})">上一页</a> --%>
+		         	<a href="javascript:void(0);" onclick="toPage(${page.currentPage -1}, ${page.dataCount})">上一页</a>
+		         	
+		         	<span>${page.currentPage}</span>  
+<%-- 		         	<a href="javaScript:toPage(${page.currentPage +1}, ${page.dataCount})">下一页</a> --%>
+		         	<a href="javascript:void(0);" onclick="toPage(${page.currentPage +1}, ${page.dataCount})">下一页</a>
+	            	<span>[记录总数：${page.dataCount}]</span>
+         	</tfoot>
+    </table> 
   </body>
 </html>

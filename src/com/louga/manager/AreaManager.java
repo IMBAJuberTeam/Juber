@@ -11,6 +11,8 @@ public interface AreaManager {
 	
 	public Area getArea(int id);
 	
+	public List<Area> getChildrens(int id);
+	
 	public List<Area> getAllAreas();
 	
 	public PageBean getAreas(PageBean pageBean, Criterion...ctrs);
