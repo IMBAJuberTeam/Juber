@@ -4,100 +4,61 @@
 String path = request.getContextPath();
 String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.getServerPort()+path+"/";
 %>
-
-<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN">
+<!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
 <html>
-  <head>
-    
-    <title>My JSP 'index.jsp' starting page</title>
-	<meta http-equiv="pragma" content="no-cache">
-	<meta http-equiv="cache-control" content="no-cache">
-	<meta http-equiv="expires" content="0">    
-	<meta http-equiv="keywords" content="keyword1,keyword2,keyword3">
-	<meta http-equiv="description" content="This is my page">
-	<script type="text/javascript" src="../jquery/jquery-1.4.4.min.js"></script>	
-	<!--
-	<link rel="stylesheet" type="text/css" href="styles.css">
-	-->
-	<script type="text/javascript">
-	var contextPath = "<%=path %>";
-	var clickTime = 0;
-		function toPage(currentPage, dataCount){
-			var url = "getAreas.do";
-			var condition = $("input[name=condition]").val();
-			window.location.href = url + "?pageNum=" + currentPage
-									+ "&dataCount=" + dataCount
-									+ "&condition=" + condition;
-		}
-		function showChildren(id){
-			var children = Array();
-			if(clickTime == 0){
-				$.getJSON(contextPath + "/area/getChildrens.do?id="+id,function(result){
-					if(result == undefined){
-						return;
-					}else{
-						children = result;
-					}
-					
-					if($("tr[name='children']")!=undefined && $("tr[name='children']").length >= children.length){
-						return ;
-					}else{
-							for(var i=0; i < children.length; i++)
-								$('#area_'+id).after("<tr name ='children'><td bgcolor='e91e6f'>"+ result[i].id +"</td><td bgcolor='e91e6f'>"+ result[i].areaCode +"</td><td bgcolor='e91e6f'>"+ result[i].areaName +"</td></tr>");
-							clickTime++;
-					}
-				
-				});
-			}else{
-				$("tr[name='children']").remove();
-				clickTime = 0;
-			}
-			$('#area_'+id).attr("bgcolor","yellow");
-			}
-		function coloredTable(isOver ,id){
-			if(isOver){
-				$('#area_'+id).attr("bgcolor","yellow");	
-			}else{
-				$('#area_'+id).attr("bgcolor","");	
-			}
-		}
-	</script>
-  </head>
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+
+  <link rel="stylesheet" href="bower_components/bootstrap/css/bootstrap.css" type="text/css" />
+  <link rel="stylesheet" href="bower_components/bootstrap/css/animate.css" type="text/css" />
+  <link rel="stylesheet" href="bower_components/bootstrap/css/font-awesome.min.css" type="text/css" />
+  <link rel="stylesheet" href="bower_components/bootstrap/css/simple-line-icons.css" type="text/css" />
+  <link rel="stylesheet" href="css/font.css" type="text/css" />
+  <link rel="stylesheet" href="css/app.css" type="text/css" />
+       <style type="text/css">
+/*          body {background-image: url('photo/1.jpg');} */
+      </style>
+<title>Louga-珞珈</title>
+</head>
+<body background-image=>
+<div class="app app-header-fixed  ">
   
-  <body>
-	<p><span>条件筛选：<input name="condition" value="${page.conditions[0] }" />
-	<input type= "button" onclick="toPage(1, '')" value = "查询"></p>
-	</p>
-    <table border="1">  
-        <thead>  
-            <tr>  
-                <th>序号</th>  
-                <th>地区编号</th>  
-                <th>地区</th>  
-            </tr>
-        </thead>
-        <tbody>
-            <c:if test="${!empty areaList }">  
-                <c:forEach items="${areaList }" var="area">  
-                    <tr id="area_${area.id }" onclick="showChildren(${area.id })" onmouseover="coloredTable(true, ${area.id })" onmouseout="coloredTable(false, ${area.id })">  
-                        <td>${area.id }</td>  
-                        <td>${area.areaCode }</td>  
-                        <td>${area.areaName }</td>
-                    </tr>               
-                </c:forEach>  
-            </c:if>
-		</tbody> 
-    </table>
-    <table>
-            <tfoot>
-<%-- 		         	<a href="javaScript:toPage(${page.currentPage -1}, ${page.dataCount})">上一页</a> --%>
-		         	<a href="javascript:void(0);" onclick="toPage(${page.currentPage -1}, ${page.dataCount})">上一页</a>
-		         	
-		         	<span>${page.currentPage}</span>  
-<%-- 		         	<a href="javaScript:toPage(${page.currentPage +1}, ${page.dataCount})">下一页</a> --%>
-		         	<a href="javascript:void(0);" onclick="toPage(${page.currentPage +1}, ${page.dataCount})">下一页</a>
-	            	<span>[记录总数：${page.dataCount}]</span>
-         	</tfoot>
-    </table> 
-  </body>
+
+<div class="container w-xxl w-auto-xs">
+  <a href class="navbar-brand block m-t">珞珈Louga</a>
+  <div class="m-b-lg">
+    <div class="wrapper text-center">
+      <strong>加入我们撒，死日的coding！！！</strong>
+    </div>
+    <form name="form" class="form-validation" action = "<%=path%>/login.do" method="post">
+      <div class="text-danger wrapper text-center">
+          
+      </div>
+      <div class="list-group list-group-sm">
+        <div class="list-group-item">
+          <input type="email" name ="userName" placeholder="邮箱" class="form-control no-border" required>
+        </div>
+        <div class="list-group-item">
+           <input type="password" name="passWord" placeholder="密码" class="form-control no-border" required>
+        </div>
+      </div>
+      <button type="submit" class="btn btn-lg btn-primary btn-block" >登录</button>
+      <div class="text-center m-t m-b"><a ui-sref="access.forgotpwd">你个蝻子又忘了密码?点我重置</a></div>
+      <div class="line line-dashed"></div>
+      <p class="text-center"><small>还没有帐号？</small></p>
+      <a href="#" class="btn btn-lg btn-default btn-block">注册Louga</a>
+    </form>
+  </div>
+  <div class="text-center">
+    <p>
+  <small class="text-muted">本网站刊载的所有内容均在网上搜集,服务用于个人学习、研究或欣赏，本网站内容原作者如不愿意在本网站刊登内容，请及时通知本站，予以删除<br>&copy; 2016</small>
+</p>
+  </div>
+</div>
+
+
+</div>
+<script type="text/javascript" src="bower_components/jquery/jquery.min.js"></script>
+<script type="text/javascript" src="bower_components/bootstrap/js/bootstrap.js"></script>
+</body>
 </html>
