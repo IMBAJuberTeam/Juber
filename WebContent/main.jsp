@@ -15,7 +15,7 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
 	<meta http-equiv="expires" content="0">    
 	<meta http-equiv="keywords" content="keyword1,keyword2,keyword3">
 	<meta http-equiv="description" content="This is my page">
-	<script type="text/javascript" src="jquery/jquery.min.js"></script>
+	<script type="text/javascript" src="<%=path %>/jquery/jquery.min.js"></script>
 	<!--
 	<link rel="stylesheet" type="text/css" href="styles.css">
 	-->
@@ -23,7 +23,7 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
 	var contextPath = "<%=path %>";
 	var clickTime = 0;
 		function toPage(currentPage, dataCount){
-			var url = "area/getAreas.do";
+			var url = contextPath + "/area/getAreas.do";
 			var condition = $("input[name=condition]").val();
 			window.location.href = url + "?pageNum=" + currentPage
 									+ "&dataCount=" + dataCount
