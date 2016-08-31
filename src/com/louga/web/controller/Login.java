@@ -18,7 +18,8 @@ public class Login {
           
           if(userName.equals(passWord)){
         	  request.getSession().setAttribute("token", "OK");
-              return new ModelAndView("redirect:/area/getAreas.do?pageNum=1&dataCount=&condition="); 
+//              return new ModelAndView("redirect:/area/getAreas.do?pageNum=1&dataCount=&condition="); 
+              return new ModelAndView("redirect:/main_.jsp"); 
           }
         return new ModelAndView("/index");  
     } 

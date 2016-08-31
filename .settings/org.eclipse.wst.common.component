@@ -2,7 +2,7 @@
     <wb-module deploy-name="SpringMVC">
         <wb-resource deploy-path="/" source-path="/WebContent" tag="defaultRootSource"/>
         <wb-resource deploy-path="/WEB-INF/classes" source-path="/src"/>
-        <property name="context-root" value="SpringMVC"/>
         <property name="java-output-path" value="/SpringMVC/build/classes"/>
+        <property name="context-root" value="louga"/>
     </wb-module>
 </project-modules>

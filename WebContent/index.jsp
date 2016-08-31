@@ -7,7 +7,8 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
 <!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
 <html>
 <head>
-<meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+   <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+   <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1" />
 
   <link rel="stylesheet" href="bower_components/bootstrap/css/bootstrap.css" type="text/css" />
   <link rel="stylesheet" href="bower_components/bootstrap/css/animate.css" type="text/css" />
@@ -16,19 +17,21 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
   <link rel="stylesheet" href="css/font.css" type="text/css" />
   <link rel="stylesheet" href="css/app.css" type="text/css" />
        <style type="text/css">
-          body {background-image: url('photo/1.jpg');} 
-      </style>
-<title>Louga-珞珈</title>
+/* body {  */
+/* 	background-image: url('photo/1.jpg');  */
+/* }  */
+</style>
+<title>Louga by  Tol brandir</title>
 </head>
 <body background-image=>
 <div class="app app-header-fixed  ">
   
 
 <div class="container w-xxl w-auto-xs">
-  <a href class="navbar-brand block m-t">珞珈Louga</a>
+  <a href class="navbar-brand block m-t">Louga</a>
   <div class="m-b-lg">
     <div class="wrapper text-center">
-      <strong>加入我们撒，死日的coding！！！</strong>
+      <strong>join us, Coding to die！！！ by tolbrandir</strong>
     </div>
     <form name="form" class="form-validation" action = "<%=path%>/login.do" method="post">
       <div class="text-danger wrapper text-center">
@@ -43,7 +46,7 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
         </div>
       </div>
       <button type="submit" class="btn btn-lg btn-primary btn-block" >登录</button>
-      <div class="text-center m-t m-b"><a ui-sref="access.forgotpwd">你个蝻子又忘了密码?点我重置</a></div>
+      <div class="text-center m-t m-b"><a ui-sref="access.forgotpwd">忘了密码?点我重置</a></div>
       <div class="line line-dashed"></div>
       <p class="text-center"><small>还没有帐号？</small></p>
       <a href="#" class="btn btn-lg btn-default btn-block">注册Louga</a>
@@ -51,7 +54,7 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
   </div>
   <div class="text-center">
     <p>
-  <small class="text-muted">本网站刊载的所有内容均在网上搜集,服务用于个人学习、研究或欣赏，本网站内容原作者如不愿意在本网站刊登内容，请及时通知本站，予以删除<br>&copy; 2016</small>
+  <small class="text-muted">本网站刊载的所有内容均在网上搜集,服务用于个人学习、研究或欣赏，本网站内容原作者如不愿意在本网站刊登内容，请及时通知本人tolrandir，予以删除<br>&copy; 2016</small>
 </p>
   </div>
 </div>
