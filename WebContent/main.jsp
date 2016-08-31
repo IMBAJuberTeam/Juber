@@ -23,12 +23,15 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
 	a {text-decoration:none;}
 	body,table {TEXT-ALIGN: center;}
 	#center,#areaTable { MARGIN-RIGHT: auto; MARGIN-LEFT: auto;}
-	
+	#junmpPage {width:24px; text-align: center;}
 	</style>
 	<script type="text/javascript">
 	var contextPath = "<%=path %>";
 	var clickTime = 0;
 		function toPage(currentPage, dataCount){
+			if(currentPage == -99){
+				currentPage = $("#junmpPage").val();
+			}
 			var url = contextPath + "/area/getAreas.do";
 			var condition = $("input[name=condition]").val();
 			window.location.href = url + "?pageNum=" + currentPage
@@ -103,7 +106,9 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
 		         	<a href="javascript:void(0);" onclick="toPage(1, ${page.dataCount})">&lt;&lt;</a>&nbsp;
 		         	<a href="javascript:void(0);" onclick="toPage(${page.currentPage -1}, ${page.dataCount})">&lt;</a>&nbsp;
 		         	
-		         	<span>${page.currentPage}/${page.totalPages}</span>&nbsp;  
+		         	<span>
+		         	<input id="junmpPage" type="text" value="${page.currentPage}" />/${page.totalPages}
+		         	<a href="javascript:void(0);" onclick="toPage(-99, ${page.dataCount})">GO</a></span>&nbsp;  
 <%-- 		         	<a href="javaScript:toPage(${page.currentPage +1}, ${page.dataCount})">下一页</a> --%>
 		         	<a href="javascript:void(0);" onclick="toPage(${page.currentPage +1}, ${page.dataCount})">></a>&nbsp;
 		         	<a href="javascript:void(0);" onclick="toPage(${page.totalPages }, ${page.dataCount})">>></a>&nbsp;&nbsp;
