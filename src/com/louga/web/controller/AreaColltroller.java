@@ -70,6 +70,7 @@ public class AreaColltroller {
     		pageNum = totalPages + "";
     	}
     	pageBean.setConditions(condition);
+    	pageBean.setTotalPages(totalPages);
     	pageBean.setCurrentPage(Integer.parseInt(pageNum.equals("0")?"1":pageNum));
     	pageBean.setMaxResult(10);
 //        request.setAttribute("areaList", (List<Area>)areaManager.getAreas(pageBean, new Criterion[]{}).getList());  

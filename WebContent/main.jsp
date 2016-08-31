@@ -19,6 +19,12 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
 	<!--
 	<link rel="stylesheet" type="text/css" href="styles.css">
 	-->
+	<style>
+	a {text-decoration:none;}
+	body,table {TEXT-ALIGN: center;}
+	#center,#areaTable { MARGIN-RIGHT: auto; MARGIN-LEFT: auto;}
+	
+	</style>
 	<script type="text/javascript">
 	var contextPath = "<%=path %>";
 	var clickTime = 0;
@@ -65,10 +71,11 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
   </head>
   
   <body>
+  <div id="center">
 	<p><span>条件筛选：<input name="condition" value="${page.conditions[0] }" />
 	<input type= "button" onclick="toPage(1, '')" value = "查询"></p>
 	</p>
-    <table border="1">  
+    <table border="1" id ="areaTable">  
         <thead>  
             <tr>  
                 <th>序号</th>  
@@ -88,16 +95,21 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
             </c:if>
 		</tbody> 
     </table>
+    <BR />
     <table>
             <tfoot>
 <%-- 		         	<a href="javaScript:toPage(${page.currentPage -1}, ${page.dataCount})">上一页</a> --%>
-		         	<a href="javascript:void(0);" onclick="toPage(${page.currentPage -1}, ${page.dataCount})">上一页</a>
+<%-- 		         	<a href="javascript:void(0);" onclick="toPage(1, ${page.dataCount})">&lt;&lt;</a> --%>
+		         	<a href="javascript:void(0);" onclick="toPage(1, ${page.dataCount})">&lt;&lt;</a>&nbsp;
+		         	<a href="javascript:void(0);" onclick="toPage(${page.currentPage -1}, ${page.dataCount})">&lt;</a>&nbsp;
 		         	
-		         	<span>${page.currentPage}</span>  
+		         	<span>${page.currentPage}/${page.totalPages}</span>&nbsp;  
 <%-- 		         	<a href="javaScript:toPage(${page.currentPage +1}, ${page.dataCount})">下一页</a> --%>
-		         	<a href="javascript:void(0);" onclick="toPage(${page.currentPage +1}, ${page.dataCount})">下一页</a>
+		         	<a href="javascript:void(0);" onclick="toPage(${page.currentPage +1}, ${page.dataCount})">></a>&nbsp;
+		         	<a href="javascript:void(0);" onclick="toPage(${page.totalPages }, ${page.dataCount})">>></a>&nbsp;&nbsp;
 	            	<span>[记录总数：${page.dataCount}]</span>
          	</tfoot>
     </table> 
+    </div>
   </body>
 </html>

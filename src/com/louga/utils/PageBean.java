@@ -6,6 +6,7 @@ public class PageBean {
 	private int currentPage;
 	private int maxResult;
 	private int dataCount;
+	private int totalPages;
 	private String[] conditions = new String[]{};
 	private List<?> list;
 	
@@ -13,13 +14,14 @@ public class PageBean {
 		
 	}
 	
-	public PageBean(int currentPage, int maxResult, int dataCount, String[] conditions, List<?> list) {
+	public PageBean(int currentPage, int maxResult, int dataCount, int totalPages, String[] conditions, List<?> list) {
 		super();
 		this.currentPage = currentPage;
 		this.maxResult = maxResult;
 		this.dataCount = dataCount;
 		this.list = list;
 		this.conditions = conditions;
+		this.totalPages = totalPages;
 	}
 
 	public int getCurrentPage() {
@@ -55,5 +57,13 @@ public class PageBean {
 
 	public void setConditions(String...conditions) {
 		this.conditions = conditions;
+	}
+
+	public int getTotalPages() {
+		return totalPages;
+	}
+
+	public void setTotalPages(int totalPages) {
+		this.totalPages = totalPages;
 	}
 }
