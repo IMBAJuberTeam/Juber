@@ -1,6 +1,7 @@
 package com.louga.web.controller;
 
 import javax.servlet.http.HttpServletRequest;
+import javax.servlet.http.HttpServletResponse;
 
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
@@ -11,14 +12,14 @@ import org.springframework.web.servlet.ModelAndView;
 public class Login {  
   
 	@RequestMapping("/login.do")
-    public ModelAndView getAreas(HttpServletRequest request, Model model){  
+    public ModelAndView getAreas(HttpServletRequest request, HttpServletResponse response, Model model){  
           String userName = request.getParameter("userName");
           String passWord = request.getParameter("passWord");
           
           if(userName.equals(passWord)){
-//        	  return new ModelAndView("redirect:/toList");
+        	  request.getSession().setAttribute("token", "OK");
               return new ModelAndView("redirect:/area/getAreas.do?pageNum=1&dataCount=&condition="); 
-          }      
+          }
         return new ModelAndView("/index");  
     } 
 }  
