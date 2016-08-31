@@ -4,7 +4,7 @@ import java.util.List;
 
 public class PageBean {
 	private int currentPage;
-	private int maxResult;
+	private int maxResult = 10;
 	private int dataCount;
 	private int totalPages;
 	private String[] conditions = new String[]{};
@@ -49,6 +49,7 @@ public class PageBean {
 
 	public void setDataCount(int dataCount) {
 		this.dataCount = dataCount;
+		this.totalPages = dataCount/maxResult + (dataCount%maxResult == 0?0:1);
 	}
 
 	public String[] getConditions() {

@@ -16,7 +16,7 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
   <link rel="stylesheet" href="css/font.css" type="text/css" />
   <link rel="stylesheet" href="css/app.css" type="text/css" />
        <style type="text/css">
-/*          body {background-image: url('photo/1.jpg');} */
+          body {background-image: url('photo/1.jpg');} 
       </style>
 <title>Louga-珞珈</title>
 </head>
