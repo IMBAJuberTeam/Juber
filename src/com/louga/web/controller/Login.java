@@ -15,7 +15,6 @@ public class Login {
           String userName = request.getParameter("userName");
           String passWord = request.getParameter("passWord");
           
-          
           if(userName.equals(passWord)){
 //        	  return new ModelAndView("redirect:/toList");
               return new ModelAndView("redirect:/area/getAreas.do?pageNum=1&dataCount=&condition="); 
