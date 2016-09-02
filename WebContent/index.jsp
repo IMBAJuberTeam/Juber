@@ -21,14 +21,14 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
 /* 	background-image: url('photo/1.jpg');  */
 /* }  */
 </style>
-<title>Louga by  Tol brandir</title>
+<title>Juber by  Tol brandir</title>
 </head>
 <body background-image=>
 <div class="app app-header-fixed  ">
   
 
 <div class="container w-xxl w-auto-xs">
-  <a href class="navbar-brand block m-t">Louga</a>
+  <a href class="navbar-brand block m-t">Juber</a>
   <div class="m-b-lg">
     <div class="wrapper text-center">
       <strong>join us, Coding to die！！！ by tolbrandir</strong>
@@ -49,7 +49,7 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
       <div class="text-center m-t m-b"><a ui-sref="access.forgotpwd">忘了密码?点我重置</a></div>
       <div class="line line-dashed"></div>
       <p class="text-center"><small>还没有帐号？</small></p>
-      <a href="#" class="btn btn-lg btn-default btn-block">注册Louga</a>
+      <a href="#" class="btn btn-lg btn-default btn-block">注册Juber</a>
     </form>
   </div>
   <div class="text-center">
