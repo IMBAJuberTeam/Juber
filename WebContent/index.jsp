@@ -10,25 +10,21 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
    <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
    <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1" />
 
-  <link rel="stylesheet" href="bower_components/bootstrap/css/bootstrap.css" type="text/css" />
-  <link rel="stylesheet" href="bower_components/bootstrap/css/animate.css" type="text/css" />
-  <link rel="stylesheet" href="bower_components/bootstrap/css/font-awesome.min.css" type="text/css" />
-  <link rel="stylesheet" href="bower_components/bootstrap/css/simple-line-icons.css" type="text/css" />
-  <link rel="stylesheet" href="css/font.css" type="text/css" />
-  <link rel="stylesheet" href="css/app.css" type="text/css" />
-       <style type="text/css">
-/* body {  */
-/* 	background-image: url('photo/1.jpg');  */
-/* }  */
-</style>
+  <link rel="stylesheet" href="static/bower_components/bootstrap/css/bootstrap.css" type="text/css" />
+  <link rel="stylesheet" href="static/bower_components/bootstrap/css/animate.css" type="text/css" />
+  <link rel="stylesheet" href="static/bower_components/bootstrap/css/font-awesome.min.css" type="text/css" />
+  <link rel="stylesheet" href="static/bower_components/bootstrap/css/simple-line-icons.css" type="text/css" />
+  <link rel="stylesheet" href="static/css/font.css" type="text/css" />
+  <link rel="stylesheet" href="static/css/app.css" type="text/css" />
+  
 <title>Juber by  Tol brandir</title>
 </head>
-<body background-image=>
+<body>
 <div class="app app-header-fixed  ">
   
 
 <div class="container w-xxl w-auto-xs">
-  <a href class="navbar-brand block m-t">Juber</a>
+  <a href="#" class="navbar-brand block m-t">Juber</a>
   <div class="m-b-lg">
     <div class="wrapper text-center">
       <strong>join us, Coding to die！！！ by tolbrandir</strong>

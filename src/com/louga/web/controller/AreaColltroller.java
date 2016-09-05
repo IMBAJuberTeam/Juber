@@ -31,7 +31,7 @@ public class AreaColltroller {
           
         request.setAttribute("areaList", areaManager.getAllAreas());  
           
-        return "/main";  
+        return "/page/area/areas";  
     }  
       
     @RequestMapping(value="/getChildrens.do", produces = "application/json; charset=utf-8")
@@ -80,6 +80,6 @@ public class AreaColltroller {
         model.addAttribute("page", pageBean);
         model.addAttribute("conditon", condition);
         
-        return new ModelAndView("/main");  
+        return new ModelAndView("/page/area/areas");  
     } 
 }  

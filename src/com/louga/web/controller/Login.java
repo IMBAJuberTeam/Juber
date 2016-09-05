@@ -26,6 +26,6 @@ public class Login {
 	
 	@RequestMapping("/main.do")
 	public ModelAndView toMain(HttpServletRequest request, HttpServletResponse response, Model model){
-		return new ModelAndView("/main_"); 
+		return new ModelAndView("/main"); 
 	}
 }  
