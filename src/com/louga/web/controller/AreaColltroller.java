@@ -20,7 +20,7 @@ import net.sf.json.JSONArray;
 import net.sf.json.JSONObject;  
   
 @Controller  
-@RequestMapping("/area")  
+@RequestMapping("")  
 public class AreaColltroller {  
   
 	@Autowired
@@ -80,6 +80,7 @@ public class AreaColltroller {
         model.addAttribute("page", pageBean);
         model.addAttribute("conditon", condition);
         
-        return new ModelAndView("/page/area/areas");  
+//        return new ModelAndView("/pages/area/area");  
+        return new ModelAndView("/main");  
     } 
 }  

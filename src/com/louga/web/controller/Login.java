@@ -19,13 +19,13 @@ public class Login {
           if(userName.equals(passWord)){
         	  request.getSession().setAttribute("token", "OK");
 //              return new ModelAndView("redirect:/area/getAreas.do?pageNum=1&dataCount=&condition="); 
-              return new ModelAndView("redirect:/main.do"); 
+              return new ModelAndView("redirect:/default.do"); 
           }
         return new ModelAndView("/index");  
     }
 	
-	@RequestMapping("/main.do")
+	@RequestMapping("/default.do")
 	public ModelAndView toMain(HttpServletRequest request, HttpServletResponse response, Model model){
-		return new ModelAndView("/main"); 
+		return new ModelAndView("/pages/area/default"); 
 	}
 }  
