@@ -30,7 +30,7 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
     <div class="app-content-body" >
 
 				<div class="bg-light lter b-b wrapper-md">
-					<h1 class="m-n font-thin h3">中华人民共和国行政地区统计表</h1>
+					<h1 class="m-n font-thin h3">中华人民共和国行政地区统计表2</h1>
 				</div>
 				<div class="wrapper-md">
 					<div class="panel panel-default">

@@ -57,7 +57,7 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
 
 
 </div>
-<script type="text/javascript" src="bower_components/jquery/jquery.min.js"></script>
-<script type="text/javascript" src="bower_components/bootstrap/js/bootstrap.js"></script>
+<script type="text/javascript" src="static/jquery/jquery.min.js"></script>
+<script type="text/javascript" src="static/bower_components/bootstrap/js/bootstrap.js"></script>
 </body>
 </html>
