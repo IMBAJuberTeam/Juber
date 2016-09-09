@@ -21,6 +21,7 @@ public class AuthenticationInterceptor extends HandlerInterceptorAdapter {
 	static {
 		excludeSet = new HashSet<>();
 		excludeSet.add("/login.do");
+		excludeSet.add("/defaultlogin.do");
 //		excludeSet.add("/com/");
 //		excludeSet.add("/static/");
 	}
@@ -34,7 +35,7 @@ public class AuthenticationInterceptor extends HandlerInterceptorAdapter {
 		}
 		if (request.getSession() == null || request.getSession().getAttribute("token") == null) {
 			result = false;
-				response.sendRedirect(request.getContextPath() + "/index.jsp");
+				response.sendRedirect(request.getContextPath() + "/defaultlogin.do");
 		}
 		return result;
 	}

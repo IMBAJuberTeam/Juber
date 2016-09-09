@@ -122,7 +122,7 @@
               </li>
               <li class="divider"></li>
               <li>
-                <a ui-sref="access.signin">退出</a>
+                <a href="/juber/logout.do">退出</a>
               </li>
             </ul>
             <!-- / dropdown -->
