@@ -1,11 +1,11 @@
-package com.louga.manager;
+package com.juber.manager;
 
 import java.util.List;
 
 import org.hibernate.criterion.Criterion;
 
-import com.louga.entity.Area;
-import com.louga.utils.PageBean;
+import com.juber.entity.Area;
+import com.juber.utils.PageBean;
 
 public interface AreaManager {
 	

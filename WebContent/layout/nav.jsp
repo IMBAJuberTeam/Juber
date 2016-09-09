@@ -16,7 +16,7 @@
                 <span>业务处理栏</span>
               </li>
               <li>
-                <a href="/louga/pages/area/area.jsp" class="auto">      
+                <a href="/juber/pages/area/area.jsp" class="auto">      
                   <span class="pull-right text-muted">
                     <i class="fa fa-fw fa-angle-right text"></i>
                     <i class="fa fa-fw fa-angle-down text-active"></i>
@@ -26,7 +26,7 @@
                 </a>
               </li>
               <li>
-                <a href="/louga/pages/area/area2.jsp" class="auto">
+                <a href="/juber/pages/area/area2.jsp" class="auto">
                   <span class="pull-right text-muted">
                     <i class="fa fa-fw fa-angle-right text"></i>
                     <i class="fa fa-fw fa-angle-down text-active"></i>
@@ -78,13 +78,13 @@
                 <span>系统管理</span>
               </li>  
               <li>
-                <a target="iframe" href="/louga/1.html">
+                <a target="iframe" href="/juber/1.html">
                   <i class="icon-user icon text-success-lter"></i>
                   <span>系统设置</span>
                 </a>
               </li>
               <li>
-                <a target="iframe" href="/louga/pages/test/test.jsp">
+                <a target="iframe" href="/juber/pages/test/test.jsp">
                   <i class="icon-question icon"></i>
                   <span>记录查询</span>
                 </a>

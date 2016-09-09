@@ -1,4 +1,4 @@
-package com.louga.utils;
+package com.juber.utils;
 
 import java.util.List;
 

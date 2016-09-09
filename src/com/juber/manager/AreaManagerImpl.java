@@ -1,4 +1,4 @@
-package com.louga.manager;  
+package com.juber.manager;  
   
 import java.util.List;
 
@@ -6,9 +6,9 @@ import org.hibernate.criterion.Criterion;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
-import com.louga.dao.AreaDao;
-import com.louga.entity.Area;
-import com.louga.utils.PageBean;
+import com.juber.dao.AreaDao;
+import com.juber.entity.Area;
+import com.juber.utils.PageBean;
 
 @Service("areaManager")
 public class AreaManagerImpl implements AreaManager {  

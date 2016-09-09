@@ -7,7 +7,7 @@
       template: null, //row html template, use for make a row.
       cols: [{"title":"序号","name":"id"},{"title":"编码","name":"areaCode"},{"title":"地区","name":"areaName"}], //column define
       items: ["id","areaCode","areaName"], //data items
-      url: "/louga/getChildrens.do?id=1", //get data from url
+      url: "/juber/getChildrens.do?id=1", //get data from url
       ajax: false, //paramater for $.ajax
       activeClass: 'active', //add to row selected
       multiSelect: false, //allow select multiple row

@@ -8,8 +8,8 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
 <head>
 <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
   <title>Juber</title>
-  <meta name="description" content="louga" />
-  <meta name="keywords" content="louga" />
+  <meta name="description" content="juber" />
+  <meta name="keywords" content="juber" />
   <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1" />
 <%@ include file="/layout/default.jsp" %>
 

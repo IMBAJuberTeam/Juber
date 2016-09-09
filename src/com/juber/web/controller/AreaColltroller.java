@@ -1,4 +1,4 @@
-package com.louga.web.controller;
+package com.juber.web.controller;
 
 import java.util.List;
 
@@ -12,9 +12,9 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.ResponseBody;
 import org.springframework.web.servlet.ModelAndView;
 
-import com.louga.entity.Area;
-import com.louga.manager.AreaManager;
-import com.louga.utils.PageBean;
+import com.juber.entity.Area;
+import com.juber.manager.AreaManager;
+import com.juber.utils.PageBean;
 
 import net.sf.json.JSONArray;
 import net.sf.json.JSONObject;  

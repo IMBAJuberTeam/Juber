@@ -1,4 +1,4 @@
-package com.louga.web.interceptor;
+package com.juber.web.interceptor;
 
 import java.util.HashSet;
 import java.util.Iterator;

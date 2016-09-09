@@ -1,4 +1,4 @@
-package com.louga.web.controller;
+package com.juber.web.controller;
 
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;

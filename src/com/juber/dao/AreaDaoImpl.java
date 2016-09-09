@@ -1,4 +1,4 @@
-package com.louga.dao;
+package com.juber.dao;
 
 import java.util.List;
 
@@ -13,8 +13,8 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Repository;
 import org.springframework.transaction.annotation.Transactional;
 
-import com.louga.entity.Area;
-import com.louga.utils.PageBean;   
+import com.juber.entity.Area;
+import com.juber.utils.PageBean;   
 
 @Repository("areaDao")
 @Transactional

@@ -1,4 +1,4 @@
-package com.louga.entity;
+package com.juber.entity;
 
 import javax.persistence.Column;
 import javax.persistence.Entity;

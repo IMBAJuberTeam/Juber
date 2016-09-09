@@ -1,7 +1,7 @@
-package com.louga.entity;
+package com.juber.entity;
 
 /**
- * 封装为一个user类
+ * 锟斤拷装为一锟斤拷user锟斤拷
  * @author dell
  *
  */
