@@ -42,7 +42,7 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
         </div>
       </div>
       <button type="submit" class="btn btn-lg btn-primary btn-block" >登录</button>
-      <div class="text-center m-t m-b"><a ui-sref="access.forgotpwd">忘了密码?点我重置</a></div>
+      <div class="text-center m-t m-b"><a>忘了密码?点我重置</a></div>
       <div class="line line-dashed"></div>
       <p class="text-center"><small>还没有帐号？</small></p>
       <a href="#" class="btn btn-lg btn-default btn-block">注册Juber</a>
