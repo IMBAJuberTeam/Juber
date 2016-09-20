@@ -3,11 +3,11 @@
   var defaults = {
     grid: {
       enabled: true,
-      data: {id:110000},
+      data: null,
       template: null, //row html template, use for make a row.
       cols: [{"title":"序号","name":"id"},{"title":"编码","name":"areaCode"},{"title":"地区","name":"areaName"}], //column define
       items: ["id","areaCode","areaName"], //data items
-      url: "/juber/getChildrens.do?id=1", //get data from url
+      url: "/juber/getAreas.do", //get data from url
       ajax: false, //paramater for $.ajax
       activeClass: 'active', //add to row selected
       multiSelect: false, //allow select multiple row
@@ -150,12 +150,12 @@
       }
       initThead($table, options);
       initTBody($table);
-//      initPagination($table, options.cols, options.pagination);
+      initPagination($table, options.cols, options.pagination);
       $table.off('.grid').on({
         'footable_initialized.grid': function(e) {
-          if (options.url || options.ajax) {
-            $.ajax(options.ajax || {
-              url: options.url
+          if (options.url || options.ajax) { $.ajax(options.ajax || {
+              url: options.url,
+              data:options.data
             }).then(function(resp) {
               grid.newItem(resp);
               ft.raise(options.events.loaded);

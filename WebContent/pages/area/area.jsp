@@ -44,16 +44,10 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
 								</span>
 							</div>
 						</div>
-						<table class="footable metro-blue default " data-page-size="10">
+						<table class="footable metro-blue default ">
 							<thead></thead>
 							<tbody></tbody>
-							<tfoot class="hide-if-no-paging">
-								<tr>
-									<td colspan="5">
-										<div class="pagination pagination-centered"></div>
-									</td>
-								</tr>
-							</tfoot>
+							<tfoot></tfoot>
 						</table>
 					</div>
 				</div>

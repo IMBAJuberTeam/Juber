@@ -10,14 +10,12 @@ import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.ResponseBody;
-import org.springframework.web.servlet.ModelAndView;
 
+import com.alibaba.fastjson.JSON;
 import com.juber.entity.Area;
 import com.juber.manager.AreaManager;
 import com.juber.utils.PageBean;
 
-import net.sf.json.JSONArray;
-import net.sf.json.JSONObject;  
   
 @Controller  
 @RequestMapping("")  
@@ -38,49 +36,21 @@ public class AreaColltroller {
     @ResponseBody
     public String  getArea(String id,HttpServletRequest request){  
     	List<Area> list = areaManager.getChildrens(Integer.parseInt(id));
-    	JSONArray jsonArray = new JSONArray();
-    	JSONObject jsonObject;
-        request.setAttribute("childrenList", list); 
-        for (Area area : list) {
-        	jsonObject = new JSONObject();
-        	jsonObject.put("id", area.getId());
-        	jsonObject.put("areaCode", area.getAreaCode());
-        	jsonObject.put("areaName", area.getAreaName());
-        	
-        	jsonArray.add(jsonObject);
-		}
-        return jsonArray.toString();
+        return JSON.toJSONString(list); 
     }
-    
-	@RequestMapping("/getAreas.do")
+    	
+	@RequestMapping(value="/getAreas.do", produces = "application/json; charset=utf-8")
 	@SuppressWarnings("unchecked")
-    public ModelAndView getAreas(String pageNum, String dataCount, String condition, 
+	@ResponseBody
+    public String getAreas(String pageNum, String dataCount, String condition, 
     		HttpServletRequest request, Model model){  
           
-    	PageBean pageBean = new PageBean();
-    	//过滤非法页数，空或者小于0的设置为起始页1
-    	if(pageNum == null || pageNum.equals("") || Integer.parseInt(pageNum) < 1){
-    		pageNum = "1";
-    	}
-    	if(dataCount== null || dataCount.equals("")){
-    		dataCount = "0";
-    	}
-    	int totalPages = (Integer.parseInt(dataCount)%10 == 0?0:1) + Integer.parseInt(dataCount)/10;
-    	if(Integer.parseInt(pageNum) > totalPages){
-    		pageNum = totalPages + "";
-    	}
-    	pageBean.setConditions(condition);
-    	pageBean.setTotalPages(totalPages);
-    	pageBean.setCurrentPage(Integer.parseInt(pageNum.equals("0")?"1":pageNum));
-    	pageBean.setMaxResult(10);
-//        request.setAttribute("areaList", (List<Area>)areaManager.getAreas(pageBean, new Criterion[]{}).getList());  
-//        request.setAttribute("page", pageBean);  
+    	PageBean pageBean = new PageBean(pageNum, dataCount, "22", new String[]{});
+    	
+        List<Area> list = (List<Area>) areaManager.getAreas(pageBean, 
+        		Restrictions.like("areaName", "%" + "" + "%")).getList();  
+
         
-        model.addAttribute("areaList",  (List<Area>)areaManager.getAreas(pageBean, Restrictions.like("areaName", "%" + condition + "%")).getList());  
-        model.addAttribute("page", pageBean);
-        model.addAttribute("conditon", condition);
-        
-//        return new ModelAndView("/pages/area/area");  
-        return new ModelAndView("/main");  
+        return JSON.toJSONString(list);  
     } 
 }  

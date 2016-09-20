@@ -198,7 +198,7 @@
 				//raise a pre-pagin event so that we can cancel the paging if needed
 				var event = ft.raise('footable_paging', { page: newPage, size: info.pageSize });
 				if (event && event.result === false) return;
-
+				//填充上下页
 				p.fillPage(ft, $tbody, newPage);
 				info.control.find('li').removeClass('active disabled');
 				p.setPagingClasses(info.control, info.currentPage, info.pages.length);

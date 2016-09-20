@@ -7,6 +7,7 @@ import org.hibernate.Query;
 import org.hibernate.SessionFactory;
 import org.hibernate.criterion.Criterion;
 import org.hibernate.criterion.MatchMode;
+import org.hibernate.criterion.Order;
 import org.hibernate.criterion.Projections;
 import org.hibernate.criterion.Restrictions;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -55,11 +56,10 @@ public class AreaDaoImpl implements AreaDao{
 		for (Criterion criterion : ctrs) {
 			c.add(criterion);
 		}
-		
 		c.setProjection(Projections.rowCount());
 		int totalRecord=Integer.valueOf(c.uniqueResult().toString());
 		c.setProjection(null);
-
+		c.addOrder(Order.asc("id"));
 		c.setFirstResult((pageBean.getMaxResult())*(pageBean.getCurrentPage()-1));
 		c.setMaxResults(pageBean.getMaxResult());
 		pageBean.setList(c.list());

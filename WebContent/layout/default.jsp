@@ -18,6 +18,7 @@
 <script type="text/javascript" src="/juber/static/bower_components/footable/js/footable.js"></script>
 <script type="text/javascript" src="/juber/static/bower_components/footable/js/footable.grid.js"></script>
 <script type="text/javascript" src="/juber/static/bower_components/footable/js/footable.paginate.js"></script>
+<script type="text/javascript" src="/juber/static/bower_components/footable/js/footable.sort.js"></script>
 
 <script type="text/javascript">
 	$(function () {
