@@ -1,3 +1,4 @@
+
 <link rel="stylesheet" href="/juber/static/bower_components/footable/css/footable.core.css" type="text/css" />
 <link rel="stylesheet" href="/juber/static/bower_components/footable/css/footable.standalone.css" type="text/css" />
 <link rel="stylesheet" href="/juber/static/bower_components/bootstrap/css/bootstrap.css" type="text/css" />

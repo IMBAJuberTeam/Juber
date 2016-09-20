@@ -1,4 +1,5 @@
   <%@ page language="java" import="java.util.*" pageEncoding="UTF-8"%>
+<script type="text/javascript" src="/juber/static/layout/nav.js"></script>
   <!-- aside -->
   <aside id="aside" class="app-aside hidden-xs bg-dark">
           <div class="aside-wrap">
@@ -80,7 +81,7 @@
               <li>
                 <a target="iframe" href="/juber/1.html">
                   <i class="icon-user icon text-success-lter"></i>
-                  <span>系统设置</span>
+                  <span>在线人数:<span id ="onlineCount"></span></span>
                 </a>
               </li>
               <li>

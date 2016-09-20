@@ -1,4 +1,4 @@
-package com.juber.filter;
+package com.juber.web.filter;
 
 import java.io.IOException;
 

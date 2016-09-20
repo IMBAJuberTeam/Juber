@@ -1,4 +1,4 @@
-package com.juber.listener;
+package com.juber.web.listener;
 
 import java.sql.Driver;
 import java.sql.DriverManager;

@@ -1,4 +1,5 @@
 <%@ page language="java" import="java.util.*" pageEncoding="UTF-8"%>
+<%@ taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c"%>
 <%
 String path = request.getContextPath();
 String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.getServerPort()+path+"/";
@@ -28,7 +29,8 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
   <!-- content -->
   <div id="content" class="app-content" role="main">
     <div class="app-content-body" >
-		默认首页
+		在线人数统计：${onlineCount}
+		
 	</div>
   </div>
   <!-- / content -->

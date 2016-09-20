@@ -6,7 +6,10 @@ import javax.servlet.http.HttpServletResponse;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.RequestMapping;
-import org.springframework.web.servlet.ModelAndView;  
+import org.springframework.web.bind.annotation.ResponseBody;
+import org.springframework.web.servlet.ModelAndView;
+
+import com.juber.web.listener.SessionState;  
   
 @Controller  
 public class Login {  
@@ -18,7 +21,7 @@ public class Login {
           
           if(userName.equals(passWord)){
         	  request.getSession().setAttribute("token", "OK");
-        	  request.getSession().setMaxInactiveInterval(600);
+        	  request.getSession().setMaxInactiveInterval(10);
 //              return new ModelAndView("redirect:/area/getAreas.do?pageNum=1&dataCount=&condition="); 
               return new ModelAndView("redirect:/defaultPage.do"); 
           }
@@ -27,6 +30,7 @@ public class Login {
 	
 	@RequestMapping("/defaultPage.do")
 	public ModelAndView toMain(HttpServletRequest request, HttpServletResponse response, Model model){
+		request.getSession().setAttribute("onlineCount", SessionState.onlineCount);
 		return new ModelAndView("/pages/area/default"); 
 	}
 	
@@ -41,4 +45,9 @@ public class Login {
 		return new ModelAndView("/index"); 
 	}  
    
+	@RequestMapping("/getOnlineCount.do")
+	@ResponseBody
+	public String getOnlineCount(){
+		return SessionState.onlineCount + "";
+	}
 }  
